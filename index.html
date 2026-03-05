@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+  </head>
+  <body>
+    <div class="app">
+      <h1 class="app-title">Weather App</h1>
+
+      <!-- Search -->
+      <div class="search-container">
+        <input
+          type="text"
+          id="cityInput"
+          class="city-input"
+          placeholder="Cari nama kota..."
+          autocomplete="off"
+        />
+        <button id="btnSearch" class="btn-search">Cari</button>
+      </div>
+
+      <!-- Error -->
+      <div id="errorMessage" class="error-message hidden"></div>
+
+      <!-- Loading -->
+      <div id="loadingState" class="loading hidden">
+        <div class="spinner"></div>
+        <p>Memuat data cuaca...</p>
+      </div>
+
+      <!-- Weather Card -->
+      <div id="weatherCard" class="weather-card hidden">
+        <div class="city-name" id="cityName"></div>
+        <div class="weather-main">
+          <img
+            id="weatherIcon"
+            class="weather-icon"
+            src=""
+            alt="weather icon"
+          />
+          <div class="temperature" id="temperature"></div>
+        </div>
+        <div class="weather-desc" id="weatherDesc"></div>
+        <div class="weather-details">
+          <div class="detail-item">
+            <span class="detail-icon">💧</span>
+            <span id="humidity" class="detail-value"></span>
+            <span class="detail-label">Kelembaban</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-icon">🎐</span>
+            <span id="windSpeed" class="detail-value"></span>
+            <span class="detail-label">Angin</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-icon">🌡️</span>
+            <span id="feelsLike" class="detail-value"></span>
+            <span class="detail-label">Terasa</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Searches -->
+      <div id="recentSearches" class="recent-searches hidden">
+        <p class="recent-title">Pencarian terakhir:</p>
+        <div id="recentList" class="recent-list"></div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
