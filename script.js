@@ -88,3 +88,15 @@ function renderRecentSearches() {
     .join("");
   show(recentSearchesEl);
 }
+
+function renderWeather(data) {
+  cityName.textContent = `${data.name}, ${data.sys.country}`;
+  temperature.textContent = `${Math.round(data.main.temp)}°C`;
+  feelsLike.textContent = `${Math.round(data.main.feels_like)}°C`;
+  humidity.textContent = `${data.main.humidity}%`;
+  windSpeed.textContent = `${data.wind.speed} m/s`;
+  weatherDesc.textContent = `${data.weather[0].description}`;
+  weatherIcon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+  setBackground(data.weather[0].main);
+  show(weatherCard);
+}
