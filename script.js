@@ -100,3 +100,33 @@ function renderWeather(data) {
   setBackground(data.weather[0].main);
   show(weatherCard);
 }
+
+async function fetchWeather(city) {
+  if (!city) {
+    showError("Please enter a city name!");
+    return;
+  }
+
+  clearError();
+  hide(weatherCard);
+  show(loadingState);
+
+  const url = `${API_URL}?q=${encodeURIComponent(city)}&appid=${API_KEY}&units=metric`;
+
+  try {
+    const res = await fetch(url);
+    if (!res.ok) {
+      if (res.status === 404) throw new Error(`City '${city}' not found`);
+      if (res.status === 401) throw new Error("Invalid API key");
+      throw new Error(`Something went wrong (${res.status})`);
+    }
+    const data = await res.json();
+    renderWeather(data);
+    saveRecentSearch(data.name);
+    renderRecentSearches();
+  } catch (error) {
+    showError(error.message);
+  } finally {
+    hide(loadingState);
+  }
+}
