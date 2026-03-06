@@ -36,3 +36,26 @@ function clearError() {
   hide(errorMessage);
   errorMessage.textContent = "";
 }
+
+function setBackground(weatherMain) {
+  document.body.classList.remove("clear", "clouds", "rain", "snow", "thunder");
+  const condition = weatherMain.toLowerCase();
+  switch (condition) {
+    case "clear":
+      document.body.classList.add("clear");
+      break;
+    case "clouds":
+      document.body.classList.add("clouds");
+      break;
+    case "rain":
+    case "drizzle":
+      document.body.classList.add("rain");
+      break;
+    case "snow":
+      document.body.classList.add("snow");
+      break;
+    case "thunderstorm":
+      document.body.classList.add("thunder");
+      break;
+  }
+}
