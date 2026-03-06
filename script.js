@@ -16,3 +16,23 @@ const windSpeed = document.getElementById("windSpeed");
 const feelsLike = document.getElementById("feelsLike");
 const recentSearchesEl = document.getElementById("recentSearches");
 const recentList = document.getElementById("recentList");
+
+function show(element) {
+  element.classList.remove("hidden");
+}
+
+function hide(element) {
+  element.classList.add("hidden");
+}
+
+function showError(message) {
+  show(errorMessage);
+  hide(loadingState);
+  hide(weatherCard);
+  errorMessage.innerHTML = message;
+}
+
+function clearError() {
+  hide(errorMessage);
+  errorMessage.textContent = "";
+}
