@@ -59,3 +59,32 @@ function setBackground(weatherMain) {
       break;
   }
 }
+
+function loadRecentSearches() {
+  const data = localStorage.getItem("recentSearches");
+  return data ? JSON.parse(data) : [];
+}
+
+function saveRecentSearch(city) {
+  recentSearches = recentSearches.filter(
+    (c) => c.toLowerCase() !== city.toLowerCase(),
+  );
+  recentSearches.unshift(city);
+  recentSearches = recentSearches.slice(0, 5);
+  localStorage.setItem("recentSearches", JSON.stringify(recentSearches));
+}
+
+function renderRecentSearches() {
+  if (recentSearches.length === 0) {
+    hide(recentSearchesEl);
+    return;
+  }
+
+  recentList.innerHTML = recentSearches
+    .map(
+      (city) =>
+        `<button class="recent-btn" data-city="${city}">${city}</button>`,
+    )
+    .join("");
+  show(recentSearchesEl);
+}
