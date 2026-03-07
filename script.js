@@ -130,3 +130,31 @@ async function fetchWeather(city) {
     hide(loadingState);
   }
 }
+
+btnSearch.addEventListener("click", () => {
+  fetchWeather(cityInput.value);
+});
+cityInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    fetchWeather(cityInput.value);
+  }
+});
+
+recentList.addEventListener("click", (e) => {
+  if (e.target.classList.contains("recent-btn")) {
+    const city = e.target.dataset.city;
+    cityInput.value = city;
+    fetchWeather(city);
+  }
+});
+
+function init() {
+  recentSearches = loadRecentSearches();
+  renderRecentSearches();
+  if (recentSearches.length > 0) {
+    cityInput.value = recentSearches[0];
+    fetchWeather(recentSearches[0]);
+  }
+}
+
+init();
