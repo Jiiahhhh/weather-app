@@ -22,5 +22,3 @@ A real-time weather application that fetches data from the OpenWeatherMap API.
 [View Demo](https://jiiahhhh.github.io/weather-app/)
 
 ---
-
-**Week 3 Project** – 18-Month Frontend Developer Roadmap
